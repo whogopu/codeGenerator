@@ -1,0 +1,46 @@
+import { css } from "@emotion/react";
+
+// sprite urls
+<% for (const [key, val] of Object.entries(spriteUrls)) { -%>
+const <%= key %>_SPRITE_URL = "<%= val %>";
+<% } -%>
+
+// base icon styles
+export const baseIcon_style = css`
+<% for (const [key, val] of Object.entries(baseStyle)) { -%>
+    <%= key %> : <%= val %>;
+<% } -%>
+`
+
+// sprite url style
+<% for (const [idKey1, idVal1] of Object.entries(spriteBgUrlStylesMap)) { -%>
+export const bg_url_<%= idKey1 %>_style = css`
+<% for (const [idKey2, idVal2] of Object.entries(idVal1)) { -%>
+    <%= idKey2 %>: <%= idVal2 %>;
+<% } -%>
+`
+<% } -%>
+
+// bgSizeHeightWidthStylesMap
+<% for (const [idKey1, idVal1] of Object.entries(bgSizeHeightWidthStylesMap)) { -%>
+<% for (const [idKey2, idVal2] of Object.entries(idVal1)) { -%>
+export const bgSizeHeightWidth_<%= idKey1 %>_<%= idKey2 %>_style = css`
+<% for (const [idKey3, idVal3] of Object.entries(idVal2)) { -%>
+    <%= idKey3 %>: <%= idVal3 %>;
+<% } -%>
+`
+<% } -%>
+<% } -%>
+
+// bgPosStylesMap
+<% for (const [idKey1, idVal1] of Object.entries(bgPosStylesMap)) { -%>
+<% for (const [idKey2, idVal2] of Object.entries(idVal1)) { -%>
+<% for (const [idKey3, idVal3] of Object.entries(idVal2)) { -%>
+export const bgSizeHeightWidth_<%= idKey1 %>_<%= idKey2 %>_<%= idKey3 %>_style = css`
+<% for (const [idKey4, idVal4] of Object.entries(idVal3)) { -%>
+    <%= idKey4 %>: <%= idVal4 %>;
+<% } -%>
+`
+<% } -%>
+<% } -%>
+<% } -%>
